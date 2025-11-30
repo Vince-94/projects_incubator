@@ -1,0 +1,12 @@
+# Core Libraries
+numpy
+opencv-python
+torch
+torchvision
+ultralytics  # For YOLOv8
+scipy  # For SORT algorithm
+filterpy  # For Kalman filter (used in SORT)
+
+# Utilities
+matplotlib  # For visualization 3.7.1
+tqdm        # For progress bars 4.65.0
