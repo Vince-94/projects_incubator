@@ -15,21 +15,21 @@ Legend
 
 ### Robotics
 
-| Status | Project                                                                             | Description                                                    |
-| ------ | ----------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| ✅      | [Robotics containerization](https://github.com/Vince-94/robotics_containerization)  | CLI that create ROS/micro-ROS configurable docker containers   |
-| ⏳      | [micro-ROS integration](https://github.com/Vince-94/micro_ros_integration)          | CLI that helps to build and deploy micro-ROS applications      |
-| ⏳      | [Remote robotics teleop](https://github.com/Vince-94/robotics_remote_teleoperation) | Remote teleoperation via web-socket                            |
-| 📝      | [Robotics cross-compilation](robotics_cross_compilation/README.md)                  | Cross-compilation tool utils for ROS2                          |
-| 📝      | [Kalman Filter]()                                                                   | Kalman filters (LKF, EKF, UKF) implementations                 |
-| 📝      | [Raspberry Motor Control Protocol]()                                                | Motor control protocols (PWM, OneShot, DShot)  implementations |
-| 📝      | [Sensor Fusion with AI](sensor_fusion_ai/README.md)                                 |                                                                |
-| ⏳      | [Real-time safety, watchdog, tracing & test harness]()                              |                                                                |
-| 🔎      | [Model Predictive Control](model_predictive_control/README.md)                      | Model Preditive Control implementations                        |
-| 📝      | [Computer Vision Navigation](computer_vision_navigation/README.md)                  |                                                                |
-| 📝      | [Real Time Object Tracking](real_time_object_tracking/README.md)                    |                                                                |
-| 📝      | [Flight Telemetry Analytics Platform](flight_telemetry_analytics/README.md)         | Telemetry collector and analytics for flights                  |
-|        |                                                                                     |                                                                |
+| Status | Project                                                                                       | Description                                                    |
+| ------ | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| ✅      | [Robotics containerization](https://github.com/Vince-94/robotics_containerization)            | CLI that create ROS/micro-ROS configurable docker containers   |
+| ⏳      | [micro-ROS integration](https://github.com/Vince-94/micro_ros_integration)                    | CLI that helps to build and deploy micro-ROS applications      |
+| ⏳      | [Remote robotics teleop](https://github.com/Vince-94/robotics_remote_teleoperation)           | Remote teleoperation via web-socket                            |
+| 📝      | [Robotics cross-compilation](robotics_cross_compilation/README.md)                            | Cross-compilation tool utils for ROS2                          |
+| 📝      | [Kalman Filter]()                                                                             | Kalman filters (LKF, EKF, UKF) implementations                 |
+| 📝      | [Raspberry Motor Control Protocol]()                                                          | Motor control protocols (PWM, OneShot, DShot)  implementations |
+| 📝      | [Sensor Fusion with AI](sensor_fusion_ai/README.md)                                           |                                                                |
+| ⏳      | [Real-time safety, watchdog, tracing & test harness]()                                        |                                                                |
+| 🔎      | [Model Predictive Control](model_predictive_control/README.md)                                | Model Preditive Control implementations                        |
+| 📝      | [Computer Vision Navigation](computer_vision_navigation/README.md)                            |                                                                |
+| 📝      | [Real Time Object Tracking](real_time_object_tracking/README.md)                              |                                                                |
+| 📝      | [Flight Telemetry Analytics Platform](https://github.com/Vince-94/flight_telemetry_analytics) | Telemetry collector and analytics for UAVs                     |
+|        |                                                                                               |                                                                |
 
 
 ### Complete systems
