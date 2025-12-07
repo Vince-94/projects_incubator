@@ -25,7 +25,7 @@ Legend
 | 📝      | [Raspberry Motor Control Protocol]()                                                          | Motor control protocols (PWM, OneShot, DShot)  implementations |
 | 📝      | [Sensor Fusion with AI](sensor_fusion_ai/README.md)                                           |                                                                |
 | ⏳      | [Real-time safety, watchdog, tracing & test harness]()                                        |                                                                |
-| 🔎      | [Model Predictive Control](model_predictive_control/README.md)                                | Model Preditive Control implementations                        |
+| 🔎      | [Model Predictive Control](https://github.com/Vince-94/model_predictive_control)              | Model Preditive Control implementations                        |
 | 📝      | [Computer Vision Navigation](computer_vision_navigation/README.md)                            |                                                                |
 | 📝      | [Real Time Object Tracking](real_time_object_tracking/README.md)                              |                                                                |
 | 📝      | [Flight Telemetry Analytics Platform](https://github.com/Vince-94/flight_telemetry_analytics) | Telemetry collector and analytics for UAVs                     |
