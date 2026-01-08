@@ -1,0 +1,41 @@
+# docker compose exec SRV bash
+# docker compose run --rm SRV bash
+
+x-common-service: &common-service
+  privileged: true
+  environment:
+    - DISPLAY=${DISPLAY}
+    - QT_X11_NO_MITSHM=1
+    - XAUTHORITY=/tmp/.docker.xauth
+    - XDG_RUNTIME_DIR=/run/user/1000
+  network_mode: host
+  tty: true
+  stdin_open: true
+  working_dir: /home/ubuntu
+  command: /bin/bash
+  restart: unless-stopped
+
+x-common-build: &common-build
+  args:
+    UID: ${UID:-1000}
+    GID: ${GID:-1000}
+
+x-common-volumes: &common-volumes
+  - "/etc/localtime:/etc/localtime:ro"
+  - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+  - "/tmp/.docker.xauth:/tmp/.docker.xauth"
+
+
+services:
+  # autonomous_coilgun:
+  #   <<: *common-service
+  #   build:
+      # context: docker
+      # dockerfile: Dockerfile
+  #     <<: *common-build
+  #   image: autonomous_coilgun-image
+  #   container_name: autonomous_coilgun-container
+  #   volumes:
+  #     - *common-volumes
+  #     - ${PWD}/led_blink:/home/ubuntu/led_blink:rw
+
