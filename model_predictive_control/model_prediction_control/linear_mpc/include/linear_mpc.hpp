@@ -21,53 +21,6 @@
 namespace mpc {
 
 
-enum class SolverStatus {
-    NotReady,
-    Ok,
-    Infeasible,
-    Error
-};
-
-
-
-struct MpcData {
-    /// @brief Discretization method
-    std::string discretization{};
-
-    /// @brief State weight matrix
-    Eigen::MatrixXd Q{};
-
-    /// @brief Input weight matrix
-    Eigen::MatrixXd R{};
-
-    /// @brief Input rate weight matrix
-    Eigen::MatrixXd S{};
-
-    /// @brief Terminal state weight matrix
-    Eigen::MatrixXd P{};
-
-    /// @brief MPC Sample time [s]
-    double Ts;
-
-    // Prediction Horizon
-    int Np{};
-
-    // Control Horizon
-    int Nc{};
-
-    // Constraints
-    Eigen::VectorXd x_min{};
-    Eigen::VectorXd x_max{};
-    Eigen::VectorXd y_min{};
-    Eigen::VectorXd y_max{};
-    Eigen::VectorXd u_min{};
-    Eigen::VectorXd u_max{};
-    Eigen::VectorXd du_min{};
-    Eigen::VectorXd du_max{};
-};
-
-
-
 class LinearMpc {
   public:
     LinearMpc(const StateSpace& ss, const MpcData& mpc_data, std::shared_ptr<IQpSolver> qp_solver, bool debug = false);
