@@ -39,18 +39,3 @@ services:
   #     - *common-volumes
   #     - ${PWD}/led_blink:/home/ubuntu/led_blink:rw
 
-  model_predictive_control:
-    <<: *common-service
-    build:
-      context: docker
-      dockerfile: Dockerfile
-      <<: *common-build
-    image: model_predictive_control-image
-    container_name: model_predictive_control-container
-    volumes:
-      - "/etc/localtime:/etc/localtime:ro"
-      - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
-      - "/tmp/.docker.xauth:/tmp/.docker.xauth"
-      - "${PWD}/model_predictive_control:/home/ubuntu/model_predictive_control:rw"
-
-
