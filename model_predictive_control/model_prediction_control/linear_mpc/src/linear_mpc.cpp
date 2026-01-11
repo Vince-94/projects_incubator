@@ -38,23 +38,6 @@ LinearMpc::LinearMpc(const StateSpace& ss, const MpcData& mpc_data, std::shared_
 }
 
 
-Eigen::VectorXd LinearMpc::onUpdate(const Eigen::VectorXd& x0, const Eigen::VectorXd& ref) {
-    // 1. Prediction
-    Eigen::MatrixXd X = this->prediction(x0, U_);
-
-    // 2. Optimization
-    Eigen::VectorXd U_opt = this->optimization(x0, ref);
-
-    // 3. Receiding horizon
-    u_opt_ = U_opt.head(nu_);
-
-    // 4. Input shifting
-    // U_ = U_opt[1:end]
-
-    return u_opt_;
-}
-
-
 void LinearMpc::checkDimensions() {
     std::cout << "Check dimensions" << std::endl;
     if (mpc_data_.Ts <= 0.0) {
@@ -119,7 +102,6 @@ void LinearMpc::checkDimensions() {
 
 
 void LinearMpc::precomputeMatrices() {
-    std::cout << "Precompute Matrices" << std::endl;
     // Prediction matrices
     Ap_ = Eigen::MatrixXd::Zero(mpc_data_.Np * nx_, nx_);
     Bp_ = Eigen::MatrixXd::Zero(mpc_data_.Np * nx_, mpc_data_.Nc * nu_);
@@ -175,7 +157,7 @@ void LinearMpc::precomputeMatrices() {
 
 
 void LinearMpc::precomputePrediction() {
-// Precompute powers of A
+    // Precompute powers of A
     std::vector<Eigen::MatrixXd> A_pow(mpc_data_.Np + 1);
     A_pow[0] = Eigen::MatrixXd::Identity(nx_, nx_);  // A^0 = I
     A_pow[1] = ssd_.A;
@@ -256,6 +238,26 @@ void LinearMpc::initSolver(bool /*debug*/) {
     // qp.settings.initial_guess = proxsuite::proxqp::InitialGuessStatus::WARM_START_WITH_PREVIOUS_RESULT;  // For receding horizon
     // qp.settings.compute_preconditioner = true;  // For ill-conditioned problems
     // qp.settings.compute_timings = true;         // Track solve time
+}
+
+
+Eigen::VectorXd LinearMpc::onUpdate(const Eigen::VectorXd& x0, const Eigen::VectorXd& ref) {
+    // 1. Prediction
+    Eigen::MatrixXd X = this->prediction(x0, U_);
+
+    // 2. Optimization
+    U_ = this->optimization(x0, ref);
+
+    // 3. Receiding horizon to the first input
+    u_opt_ = U_.head(nu_);
+
+    // 4. Input shifting for warm-start
+    Eigen::VectorXd last_values = U_.tail(nu_);
+    U_.head(mpc_data_.Nc * nu_ - nu_) = U_.segment(nu_, mpc_data_.Nc * nu_ - nu_);
+    U_.tail(nu_) = last_values;
+    // U_.tail(nu_) = U_.segment(mpc_data_.Nc * nu_ - 2 * nu_, nu_);  // TODO slightly more performant
+
+    return u_opt_;
 }
 
 
