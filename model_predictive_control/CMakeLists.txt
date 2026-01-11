@@ -34,9 +34,10 @@ find_package(GTest REQUIRED)
 # LIBRARIES #
 #############
 
-include_directories(${PROJECT_SOURCE_DIR}/utils/include)
+include_directories(${PROJECT_SOURCE_DIR}/model_prediction_control/utils/include)
 
-add_subdirectory(linear_mpc)
+add_subdirectory(model_prediction_control/linear_mpc)
+add_subdirectory(model_prediction_control/linear_time_varying_mpc)
 
 
 #########
@@ -44,7 +45,7 @@ add_subdirectory(linear_mpc)
 #########
 enable_testing()
 
-add_executable(test_data_structure utils/tests/test_data_structure.cpp)
+add_executable(test_data_structure model_prediction_control/utils/tests/test_data_structure.cpp)
 target_include_directories(test_data_structure PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
