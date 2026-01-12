@@ -1,0 +1,32 @@
+; dshot.pio
+; Simple PIO program to produce variable-high/variable-low pulses.
+; The C side pushes one 32-bit integer per interval; the SM moves the value to X
+; and uses a jmp x-- style loop to produce the requested number of instruction cycles.
+;
+; Protocol:
+;   For every DSHOT bit the C side pushes:
+;      - high_count (32-bit)
+;      - low_count  (32-bit)
+;   The PIO loops:
+;      pull -> mov x, osr ; set pin high ; wait x loops
+;      pull -> mov x, osr ; set pin low  ; wait x loops
+;
+; sideset is used to toggle the pin for minimal instructions.
+.side_set 1       ; use one side-set bit for pins
+.program dshot_out
+; wrap target at top
+.wrap_target
+    pull block            ; get high_count
+    mov x, osr            ; move to X
+    set pins, 1   side 0  ; set pin high (sideset ensures immediate pin change)
+high_wait:
+    jmp x-- high_wait      ; decrement X until zero (each jmp is 1 instruction cycle)
+
+    pull block            ; get low_count
+    mov x, osr
+    set pins, 0   side 0  ; set pin low
+low_wait:
+    jmp x-- low_wait       ; wait low_count cycles
+
+    jmp wrap_target        ; loop forever
+.wrap
