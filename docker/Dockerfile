@@ -44,6 +44,13 @@ RUN apt install --quiet -y \
     libboost-all-dev \
     libeigen3-dev
 
+# SDL2 for visualization
+RUN apt update && apt install -y \
+    libsdl2-dev \
+    libsdl2-image-dev \
+    libsdl2-gfx-dev \
+    libsdl2-ttf-dev
+
 # Python deps
 RUN apt install --quiet -y \
     python3 python3-dev python3-pip python3-future
@@ -72,10 +79,10 @@ RUN if dpkg --print-architecture | grep -q "arm"; then \
 
 
 # Install PROXQP
-RUN git clone --recurse-submodules https://github.com/Simple-Robotics/proxsuite.git
-RUN cd proxsuite
-WORKDIR proxsuite
-RUN mkdir build
+# RUN git clone --recurse-submodules https://github.com/Simple-Robotics/proxsuite.git
+# RUN cd proxsuite
+# WORKDIR proxsuite
+# RUN mkdir build
 
 # WORKDIR proxsuite/build
 # RUN cmake .. -DCMAKE_BUILD_TYPE=Release \
