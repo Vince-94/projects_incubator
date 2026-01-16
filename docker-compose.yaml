@@ -27,15 +27,17 @@ x-common-volumes: &common-volumes
 
 
 services:
-  # autonomous_coilgun:
+  # dummy:
   #   <<: *common-service
   #   build:
-      # context: docker
-      # dockerfile: Dockerfile
+  #     context: docker
+  #     dockerfile: Dockerfile
   #     <<: *common-build
-  #   image: autonomous_coilgun-image
-  #   container_name: autonomous_coilgun-container
+  #   image: dummy-image
+  #   container_name: dummy-container
   #   volumes:
-  #     - *common-volumes
-  #     - ${PWD}/led_blink:/home/ubuntu/led_blink:rw
+  #     - "/etc/localtime:/etc/localtime:ro"
+  #     - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+  #     - "/tmp/.docker.xauth:/tmp/.docker.xauth"
+  #     - ${PWD}/dir:/home/ubuntu/dir:rw
 
