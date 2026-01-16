@@ -61,6 +61,9 @@ struct Graph {
         return adj_list_[node];
     }
 
+    const Position getPosition(const NodeId node) const {
+        return positions_[node];
+    }
 
 
 protected:

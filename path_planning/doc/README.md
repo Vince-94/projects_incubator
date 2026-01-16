@@ -67,11 +67,11 @@ Path planning algorithms can be categorized by their approach. Each category inc
 
 ### Graph-Based Classical Algorithms
 These discretize the space into a graph and search for paths.
-
-- Dijkstra’s Algorithm: Finds shortest paths from a single source using a priority queue. Complete and optimal for non-negative weights. Time: O((V+E) log V).
-- A*: Extends Dijkstra with heuristics (e.g., Manhattan distance) for faster goal-directed search. Optimal if heuristic is admissible. Widely used in games and robotics.
-- D*: Incremental version of A* for dynamic environments; reuses previous searches for efficiency in replanning.
-- Theta*: Improves A* by allowing any-angle paths in grids, reducing zigzags for smoother trajectories.
+- BFS (Breadth-First Search)
+- Dijkstra Algorithm
+- A*
+- D*
+- Theta*
 
 ### Sampling-Based Algorithms
 These sample configurations randomly to build roadmaps or trees, excelling in high-dimensional spaces.
@@ -102,9 +102,10 @@ Integrates machine learning for improved efficiency or adaptability.
 
 
 ## Implementation Considerations
+
 When implementing path planning:
 
-- Data Structures: Use std::vector<std::vector<int>> for adjacency lists in C++; prefer size_t for indices.
+- Data Structures: Use `std::vector<std::vector<int>>` for adjacency lists in C++; prefer size_t for indices.
 - Efficiency: Reserve memory to avoid reallocations; use priority queues (e.g., std::priority_queue) for Dijkstra/A*.
 - Testing: Return paths as vectors for unit tests; make methods const where possible.
 - Distances: Clarify if computing single-source or all-pairs.

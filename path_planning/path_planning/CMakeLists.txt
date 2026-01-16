@@ -91,6 +91,7 @@ include_directories(${PROJECT_SOURCE_DIR}/utils/include)
 
 add_subdirectory(graph_based_algo/bfs)
 add_subdirectory(graph_based_algo/dijkstra)
+add_subdirectory(graph_based_algo/a_star)
 
 
 
