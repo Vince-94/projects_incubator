@@ -1,0 +1,41 @@
+# Build artifacts
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+core
+
+# Common build directories
+build/
+out/
+bin/
+obj/
+Debug/
+Release/
+debug/
+release/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.user
+*.suo
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+compile_commands.json   # ← comment out if you want to commit it
+
+# Misc
+*~
+.DS_Store
+Thumbs.db
