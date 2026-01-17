@@ -58,12 +58,12 @@ void ExtendedKalmanFilter::initializeAtFirstUpdate(const Eigen::VectorXd z, cons
     // Approximate nonlinear init: Linearize h around guess (e.g., zero), use pseudoinverse
     Eigen::VectorXd x_guess = Eigen::VectorXd::Zero(nx_);
     Eigen::VectorXd u_guess = Eigen::VectorXd::Zero(nu_);  // Or actual u if available
-    auto H = jacobian_dh_dx(system_model_.h, x_guess, u_guess);  // dh/dx at guess
+    auto Jhx = jacobian_dh_dx(system_model_.h, x_guess, u_guess);  // Jhx = dh/dx at guess
     auto pred_z = system_model_.h(x_guess, u_guess);
-    auto y_init = z - pred_z + H * x_guess;  // Linearized residual
+    auto y_init = z - pred_z + Jhx * x_guess;  // Linearized residual
 
-    auto Ht_Rinv = H.transpose() * R.inverse();
-    auto info_matrix = Ht_Rinv * H;
+    auto Ht_Rinv = Jhx.transpose() * R.inverse();
+    auto info_matrix = Ht_Rinv * Jhx;
 
     // Use SelfAdjointEigenSolver for singularity
     Eigen::SelfAdjointEigenSolver<Eigen::MatrixXd> solver(info_matrix);
@@ -117,21 +117,21 @@ void ExtendedKalmanFilter::update(const Eigen::VectorXd z, const Eigen::MatrixXd
     auto y = z - system_model_.h(x_prio_, u0_);
 
     // Innovation covariance: Jhx Pk Jhx^T + Jhv Rk Jhv^T
-    auto H = jacobian_dh_dx(system_model_.h, x_prio_, u0_);  // Jacobian for measurement: Jhx = dh/dx
-    auto S = H * P_prio_ * H.transpose() + R;
+    auto Jhx = jacobian_dh_dx(system_model_.h, x_prio_, u0_);  // Jacobian for measurement: Jhx = dh/dx
+    auto S = Jhx * P_prio_ * Jhx.transpose() + R;
 
     // Check S invertibility via LLT
     Eigen::LLT<Eigen::MatrixXd> llt(S);
     if (llt.info() != Eigen::Success) throw std::runtime_error("S not positive definite");
 
     // Kalman gain: K(k) = P_prio Jhx^T S^(-1)
-    auto K = P_prio_ * H.transpose() * S.inverse();
+    auto K = P_prio_ * Jhx.transpose() * S.inverse();
 
     // State posteriori: x_post(k) = x_prio(k) + K(k) v(k)
     x_post_ = x_prio_ + K * y;
 
     // Convariance posteriori: P_post(K) = (I - K(k) Jhx) P_prio(k)
-    P_post_ = (Eigen::MatrixXd::Identity(nx_, nx_) - K * H) * P_prio_;
+    P_post_ = (Eigen::MatrixXd::Identity(nx_, nx_) - K * Jhx) * P_prio_;
 
     // Enforce symmetry: P_post_ = 1/2 * (P_post + P_post^T);
     P_post_ = 0.5 * (P_post_ + P_post_.transpose());

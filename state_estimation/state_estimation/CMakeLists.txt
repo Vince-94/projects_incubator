@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.20)
 project(
     state_estimation
     VERSION 0.1.0
-    DESCRIPTION "Path Planning stack"
+    DESCRIPTION "State Estimation stack"
     LANGUAGES CXX
 )
 

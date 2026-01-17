@@ -55,7 +55,6 @@ private:
     Eigen::MatrixXd P_post_{};
 
     Eigen::VectorXd u0_{};
-
 };
 
 
