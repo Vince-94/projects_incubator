@@ -64,7 +64,7 @@ struct StateSpace {
     Eigen::VectorXd updateState(Eigen::VectorXd x0, Eigen::VectorXd u) {
         // Dimension validation
         if (x0.size() != nx || u.size() != nu) {
-            std::string error_message = "u has unexpected dimensions. Expected: (" + std::to_string(nu) + "). Actual: (" + std::to_string(u.size()) + ")";
+            std::string error_message = "u has unexpected dimensions. Expected: (" + std::to_string(nu) + "). Actual: (" + std::to_string(u.size()) + ")";  // TODo incomplete
             throw std::invalid_argument(error_message);
         }
 
@@ -96,6 +96,7 @@ struct StateSpace {
 
 struct NonlinearSystem {
     using DynFunc = std::function<Eigen::VectorXd(const Eigen::VectorXd&, const Eigen::VectorXd&)>;
+    // TODO make the second arg std::optional -> using MeasurementFunc = std::function<Eigen::VectorXd(const Eigen::VectorXd& x, std::optional<const Eigen::VectorXd&> u = std::nullopt)>;
 
     // Dimensions
     int nx{};
@@ -119,6 +120,34 @@ struct NonlinearSystem {
     NonlinearSystem(DynFunc f_, DynFunc h_,  const Eigen::VectorXd& x0, const Eigen::VectorXd& u0) : NonlinearSystem(f_, x0, u0) {
         auto y = h_(x0, u0);
         ny = y.size();
+    }
+
+    Eigen::MatrixXd updateCovariance(Eigen::MatrixXd P0, Eigen::MatrixXd Q, Eigen::MatrixXd Jfx, Eigen::MatrixXd Jfu) {
+        // Dimension validation
+        if (P0.rows() != nx || P0.cols() != nx) {
+            throw std::invalid_argument(
+                "P0 must be square and have size " + std::to_string(nx) + "×" + std::to_string(nx) +
+                " (got " + std::to_string(P0.rows()) + "×" + std::to_string(P0.cols()) + ")"
+            );
+        }
+
+        if (Q.rows() != nu || Q.cols() != nu) {
+            throw std::invalid_argument(
+                "Q must be square and have size " + std::to_string(nu) + "×" + std::to_string(nu) +
+                " (got " + std::to_string(Q.rows()) + "×" + std::to_string(Q.cols()) + ")"
+            );
+        }
+
+        bool hasAdditiveProcessNoise = true;  // TODO hardcoded
+        if (hasAdditiveProcessNoise) {
+            // Additive process noise: x = f(x,u) + w
+            // P(k+1) = A P A^T + B Q B^T
+            return Jfx * P0 * Jfx.transpose() + Q;  // Q (nx, nx)
+        } else {
+            // Noise on Control/Input: x = f(x, u + m)
+            // P(k+1) = A P A^T + B Q B^T
+            return Jfx * P0 * Jfx.transpose() + Jfu * Q * Jfu.transpose();  // Q (u, nu)
+        }
     }
 };
 

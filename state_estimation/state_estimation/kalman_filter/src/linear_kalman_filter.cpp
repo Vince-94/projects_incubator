@@ -31,7 +31,6 @@ void LinearKalmanFilter::initialize(const Eigen::VectorXd x0, const Eigen::Matri
 
     // A priori state/covariance initialization
     x_prio_.setZero(nx_);
-
     P_prio_.setZero(nx_, nx_);
 
     // A posteriori state/covariance initialization
@@ -79,8 +78,11 @@ void LinearKalmanFilter::predict(const Eigen::VectorXd u, const Eigen::MatrixXd 
     if (u.size() != nu_) throw std::invalid_argument("u dimensions inconsistent");
     if (Q.rows() != nx_ || Q.cols() != nx_) throw std::invalid_argument("Q dimensions inconsistent");
 
-    x_prio_ = system_model_.updateState(u, x_post_);
-    P_prio_ = system_model_.updateCovariance(Q, P_post_);
+    // State a-priori prediciton
+    x_prio_ = system_model_.updateState(x_post_, u);
+
+    // Covariance a-priori prediction
+    P_prio_ = system_model_.updateCovariance(P_post_, Q);
 }
 
 

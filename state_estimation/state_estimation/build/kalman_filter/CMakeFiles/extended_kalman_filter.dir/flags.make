@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/ubuntu/state_estimation/state_estimation/utils/include
+CXX_INCLUDES = -I/home/ubuntu/state_estimation/state_estimation/utils/include -I/home/ubuntu/state_estimation/state_estimation/kalman_filter/include -isystem /usr/include/eigen3
 
-CXX_FLAGS =  --coverage -O3 -DNDEBUG -std=gnu++23 -Wall -Wextra -Wpedantic -Werror
+CXX_FLAGS =  --coverage -O3 -DNDEBUG -std=gnu++23 -fPIC -Wall -Wextra -Wpedantic -Werror
 
