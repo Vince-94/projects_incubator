@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblinearunscented_kalman_filter_kalman_filter.a CMakeFiles/linearunscented_kalman_filter_kalman_filter.dir/src/unscented_kalman_filter.cpp.o
+/usr/bin/ranlib liblinearunscented_kalman_filter_kalman_filter.a
