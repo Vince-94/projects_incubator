@@ -21,16 +21,6 @@ sudo apt install libeigen3-dev
 sudo apt install libsdl2-dev libsdl2-ttf-dev
 ```
 
-- symengine
-```sh
-sudo apt install cmake libgmp-dev
-git clone https://github.com/symengine/symengine.git
-mkdir build && cd build
-cmake ..
-make
-make install
-```
-
 - AKFSF-Simulation
 ```sh
 git clone https://github.com/technitute/AKFSF-Simulation-CPP

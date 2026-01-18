@@ -50,15 +50,15 @@ set_target_properties(unscented_kalman_filter PROPERTIES POSITION_INDEPENDENT_CO
 # EXECUTABLES #
 ###############
 
-# main_linear_kalman_filter
-# add_executable(main_linear_kalman_filter
-#     main.cpp
-# )
-# target_include_directories(main_linear_kalman_filter PUBLIC
-#   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-#   $<INSTALL_INTERFACE:include>
-# )
-# target_link_libraries(main_linear_kalman_filter PRIVATE linear_kalman_filter)
+# main
+add_executable(main
+    main.cpp
+)
+target_include_directories(main PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+target_link_libraries(main PRIVATE linear_kalman_filter)
 
 
 

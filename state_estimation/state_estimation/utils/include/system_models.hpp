@@ -81,9 +81,9 @@ struct StateSpace {
             );
         }
 
-        if (Q.rows() != nu || Q.cols() != nu) {
+        if (Q.rows() != nx || Q.cols() != nx) {
             throw std::invalid_argument(
-                "Q must be square and have size " + std::to_string(nu) + "×" + std::to_string(nu) +
+                "Q must be square and have size " + std::to_string(nx) + "×" + std::to_string(nx) +
                 " (got " + std::to_string(Q.rows()) + "×" + std::to_string(Q.cols()) + ")"
             );
         }
