@@ -41,3 +41,18 @@ services:
   #     - "/tmp/.docker.xauth:/tmp/.docker.xauth"
   #     - ${PWD}/dir:/home/ubuntu/dir:rw
 
+  # docker compose run --rm state_estimation bash
+  state_estimation:
+    <<: *common-service
+    build:
+      context: docker
+      dockerfile: Dockerfile
+      <<: *common-build
+    image: path_planning-image
+    container_name: state_estimation-container
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+      - "/tmp/.docker.xauth:/tmp/.docker.xauth"
+      - ${PWD}/state_estimation:/home/ubuntu/state_estimation:rw
+
