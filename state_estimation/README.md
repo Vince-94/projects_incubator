@@ -13,7 +13,6 @@
 ## Setup
 
 ### Dependencies
-- Boost
 - Eigen
 - SDL2
 

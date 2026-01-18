@@ -137,7 +137,7 @@ int main() {
     // ───────────────────────────────────────────────
     // Optional: simple console plot (very basic)
     // ───────────────────────────────────────────────
-    std::cout << "\nBasic position plot (T = true, E = estimate, . = 1 sigma bound)\n";
+    std::cout << "Basic position plot (T = true, E = estimate, . = 1 sigma bound)" << std::endl;
     for (size_t i = 0; i < pos_v.size(); ++i) {
         if (i % 5 != 0) continue;
         double p = pos_v[i];
@@ -157,7 +157,7 @@ int main() {
             else if (c >= lower && c <= upper) std::cout << ".";
             else std::cout << " ";
         }
-        std::cout << "\n";
+        std::cout << std::endl;
     }
 
 

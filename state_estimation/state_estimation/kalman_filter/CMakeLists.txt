@@ -45,7 +45,6 @@ set_target_properties(unscented_kalman_filter PROPERTIES POSITION_INDEPENDENT_CO
 
 
 
-
 ###############
 # EXECUTABLES #
 ###############
@@ -59,6 +58,4 @@ target_include_directories(main PUBLIC
   $<INSTALL_INTERFACE:include>
 )
 target_link_libraries(main PRIVATE linear_kalman_filter)
-
-
 

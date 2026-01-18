@@ -67,21 +67,6 @@ find_package(Eigen3 REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system filesystem)
 
 
-#############
-# LIBRARIES #
-#############
-
-# visualization
-# add_library(visualization
-#     src/visualization.cpp
-# )
-# target_include_directories(visualization PUBLIC
-#   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-#   $<INSTALL_INTERFACE:include>
-# )
-# target_link_libraries(visualization PRIVATE SDL2::SDL2 SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf ${SDL2_GFX_LIBRARY})
-
-
 
 ###########
 # MODULES #
