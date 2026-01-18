@@ -15,26 +15,24 @@ Legend
 
 #### Simple modules
 
-| Status | Project                                                                          | Description                                                    |
-| ------ | -------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| ⏳      | [Model Predictive Control](https://github.com/Vince-94/model_predictive_control) | Model Preditive Control implementations                        |
-| ⏳      | [Path Planning](https://github.com/Vince-94/projects_incubator)                  | Path planning algorithms implementation                        |
-| ⏳      | [Kalman Filter](kalman_filter/README.md)                                         | Kalman Filter implementation                                   |
-| 📝      | [Particle Filter](particle_filter/README.md)                                     | Particle Filter implementation                                 |
-| ⏳      | [RPi Motor Control Protocol](rpi_motor_control_protocol/README.md)               | Motor control protocols (PWM, OneShot, DShot)  implementations |
+| Status | Project                                                                          | Description                                                               |
+| ------ | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| 🕒      | [Model Predictive Control](https://github.com/Vince-94/model_predictive_control) | Model Preditive Control implementations                                   |
+| 🕒      | [Path Planning](https://github.com/Vince-94/projects_incubator)                  | Path planning algorithms implementation                                   |
+| ⏳      | [State estimation](state_estimation/README.md)                                   | State estimators implementations (Kalman filter, Particle fitler, etc...) |
+| ⏳      | [RPi Motor Control Protocol](rpi_motor_control_protocol/README.md)               | Motor control protocols (PWM, OneShot, DShot) implementations             |
 
 
 #### Complex modules
 
-| Status | Project                                                                                       | Description                                               |
-| ------ | --------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| 📝      | [Sensor Fusion with AI](sensor_fusion_ai/README.md)                                           | Sensor fusion with AI                                     |
-| 📝      | [UGV Fleet Management](ugv_fleet_management/README.md)                                        | Fleet management for UGVs                                 |
-| ⏳      | [Remote robotics teleop](https://github.com/Vince-94/robotics_remote_teleoperation)           | Remote teleoperation via web-socket                       |
-| 📝      | [Flight Telemetry Analytics Platform](https://github.com/Vince-94/flight_telemetry_analytics) | Telemetry collector and analytics for UAVs                |
-| ⏳      | [Micro-ROS integration](https://github.com/Vince-94/micro_ros_integration)                    | CLI that helps to build and deploy micro-ROS applications |
-| 📝      | [Computer Vision Navigation](computer_vision_navigation/README.md)                            | Navigation using computer vision technicques              |
-| 📝      | [Real-time safety, watchdog, tracing & test harness]()                                        |                                                           |
+| Status | Project                                                                                       | Description                                  |
+| ------ | --------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| 📝      | [Sensor Fusion with AI](sensor_fusion_ai/README.md)                                           | Sensor fusion with AI                        |
+| 📝      | [UGV Fleet Management](ugv_fleet_management/README.md)                                        | Fleet management for UGVs                    |
+| ⏳      | [Remote robotics teleop](https://github.com/Vince-94/robotics_remote_teleoperation)           | Remote teleoperation via web-socket          |
+| 📝      | [Flight Telemetry Analytics Platform](https://github.com/Vince-94/flight_telemetry_analytics) | Telemetry collector and analytics for UAVs   |
+| 📝      | [Computer Vision Navigation](computer_vision_navigation/README.md)                            | Navigation using computer vision technicques |
+| 📝      | [Real-time safety, watchdog, tracing & test harness]()                                        |                                              |
 
 
 #### Infrastructure
@@ -42,6 +40,7 @@ Legend
 | Status | Project                                                                                       | Description                                                  |
 | ✅      | [Robotics containerization](https://github.com/Vince-94/robotics_containerization)            | CLI that create ROS/micro-ROS configurable docker containers |
 | 📝      | [Robotics cross-compilation](robotics_cross_compilation/README.md)                            | Cross-compilation tool utils for ROS2                        |
+| ⏳      | [Micro-ROS integration](https://github.com/Vince-94/micro_ros_integration)                    | CLI that helps to build and deploy micro-ROS applications |
 
 
 #### Standalone
