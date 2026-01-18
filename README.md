@@ -19,7 +19,7 @@ Legend
 | ------ | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | 🕒      | [Model Predictive Control](https://github.com/Vince-94/model_predictive_control) | Model Preditive Control implementations                                   |
 | 🕒      | [Path Planning](https://github.com/Vince-94/projects_incubator)                  | Path planning algorithms implementation                                   |
-| ⏳      | [State estimation](state_estimation/README.md)                                   | State estimators implementations (Kalman filter, Particle fitler, etc...) |
+| 🕒      | [State Estimation](https://github.com/Vince-94/state_estimation)                 | State estimators implementations (Kalman filter, Particle fitler, etc...) |
 | ⏳      | [RPi Motor Control Protocol](rpi_motor_control_protocol/README.md)               | Motor control protocols (PWM, OneShot, DShot) implementations             |
 
 
