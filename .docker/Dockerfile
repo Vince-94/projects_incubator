@@ -77,6 +77,13 @@ RUN if dpkg --print-architecture | grep -q "arm"; then \
         apt update && apt install -y libopenblas-dev; \
     fi
 
+# Python network libs
+RUN apt install --quiet -y \
+    libpcap-dev \
+    iw \
+    iproute2 \
+    python3-scapy
+
 
 # Install PROXQP
 # RUN git clone --recurse-submodules https://github.com/Simple-Robotics/proxsuite.git

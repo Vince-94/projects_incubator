@@ -20,7 +20,7 @@ Legend
 | 🕒      | [Model Predictive Control](https://github.com/Vince-94/model_predictive_control) | Model Preditive Control implementations                                   |
 | 🕒      | [Path Planning](https://github.com/Vince-94/projects_incubator)                  | Path planning algorithms implementation                                   |
 | 🕒      | [State Estimation](https://github.com/Vince-94/state_estimation)                 | State estimators implementations (Kalman filter, Particle fitler, etc...) |
-| ⏳      | [RPi Motor Control Protocol](rpi_motor_control_protocol/README.md)               | Motor control protocols (PWM, OneShot, DShot) implementations             |
+| 🕒      | [Motor Control Protocol](https://github.com/Vince-94/motor_control_protocols)    | Motor control protocols (PWM, OneShot, DShot) implementations             |
 
 
 #### Complex modules
@@ -54,10 +54,14 @@ Legend
 
 ### Hacking
 
-| Status | Project                                                           | Description |
-| ------ | ----------------------------------------------------------------- | ----------- |
-| ✅      | [RFID/NFC Item Tracking System](rfid_nfc_item_tracking/README.md) |             |
-|        |                                                                   |             |
+| Status | Project                                                              | Description |
+| ------ | -------------------------------------------------------------------- | ----------- |
+| 📝      | [Network Monitoring](network_monitoring/README.md)                   |             |
+| 📝      | [Network Intrusion Detection](network_intrusing_detection/README.md) |             |
+| 📝      | [Network Wardriving](network_wardriving/README.md)                   |             |
+| 📝      | [Network Passive Scanner](network_passive_scanner/README.md)         |             |
+| 📝      | [Network Device Tracker](network_device_tracker/README.md)           |             |
+| 📝      | [RFID/NFC Item Tracking System](rfid_nfc_item_tracking/README.md)    |             |
 
 
 ### Others
@@ -66,6 +70,7 @@ Legend
 | ------ | ----------------------------------------------------------------------------- | ----------- |
 | ✅      | [LED Blink](led_blink/README.md)                                              |             |
 | ✅      | [Calendar alert telegram bot](https://github.com/Vince-94/calendar_alert_bot) |             |
+
 
 
 

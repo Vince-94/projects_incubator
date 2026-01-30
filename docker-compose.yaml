@@ -2,15 +2,42 @@
 # docker compose run --rm SRV bash
 
 services:
-  dummy:
+  # dummy:
+  #   build:
+  #     context: .docker
+  #     dockerfile: Dockerfile
+  #     args:
+  #       UID: ${UID:-1000}
+  #       GID: ${GID:-1000}
+  #   image: dummy-image
+  #   container_name: dummy-container
+  #   privileged: true
+  #   environment:
+  #     - DISPLAY=${DISPLAY}
+  #     - QT_X11_NO_MITSHM=1
+  #     - XAUTHORITY=/tmp/.docker.xauth
+  #     - XDG_RUNTIME_DIR=/run/user/1000
+  #   volumes:
+  #     - "/etc/localtime:/etc/localtime:ro"
+  #     - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+  #     - "/tmp/.docker.xauth:/tmp/.docker.xauth"
+  #     - ${PWD}/dir:/home/ubuntu/dir:rw
+  #   network_mode: host
+  #   tty: true
+  #   stdin_open: true
+  #   working_dir: /home/ubuntu
+  #   command: /bin/bash
+  #   restart: unless-stopped
+
+  network_hacking:
     build:
       context: .docker
       dockerfile: Dockerfile
       args:
         UID: ${UID:-1000}
         GID: ${GID:-1000}
-    image: dummy-image
-    container_name: dummy-container
+    image: network_hacking-image
+    container_name: network_hacking-container
     privileged: true
     environment:
       - DISPLAY=${DISPLAY}
@@ -21,10 +48,10 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
       - "/tmp/.docker.xauth:/tmp/.docker.xauth"
-      - ${PWD}/dir:/home/ubuntu/dir:rw
+      - ${PWD}/network_monitoring:/home/ubuntu/network_monitoring:rw
     network_mode: host
     tty: true
     stdin_open: true
-    working_dir: /home/ubuntu
+    working_dir: /home/ubuntu/network_monitoring
     command: /bin/bash
     restart: unless-stopped
